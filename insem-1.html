@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLECommerce - Online Shopping</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f5f9;
+            color: #222;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .main-table {
+            width: 100%;
+            background: white;
+        }
+
+        .header {
+            background: #0D47A1;
+            color: white;
+        }
+
+        .header-table {
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: white;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #ffeb3b;
+        }
+
+        .search-input {
+            width: 65%;
+            max-width: 350px;
+            padding: 11px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-btn {
+            padding: 11px 16px;
+            background: #ffca28;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .header-links {
+            color: white;
+            line-height: 2;
+            white-space: nowrap;
+        }
+
+        .categories {
+            width: 100%;
+            background: #1976D2;
+            color: white;
+            text-align: center;
+        }
+
+        .categories td {
+            padding: 13px 5px;
+            font-weight: bold;
+        }
+
+        .banner {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background: #e3f2fd;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 18%;
+            left: 6%;
+            color: #0D47A1;
+            text-shadow: 0 1px white;
+        }
+
+        .banner-text h1 {
+            font-size: 42px;
+            margin: 0 0 12px;
+        }
+
+        .banner-text p {
+            font-size: 18px;
+        }
+
+        .shop-btn {
+            background: #e91e3a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .section-title {
+            background: #1565C0;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            font-size: 25px;
+        }
+
+        .products {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .product-cell {
+            width: 25%;
+            padding: 18px 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .product-img {
+            width: 100%;
+            max-width: 190px;
+            height: 180px;
+            object-fit: contain;
+        }
+
+        .product-cell h3 {
+            margin: 12px 0 7px;
+            font-size: 18px;
+        }
+
+        .price {
+            color: #e53935;
+            font-size: 23px;
+            font-weight: bold;
+            margin: 8px 0 14px;
+        }
+
+        .cart-btn {
+            background: #0875d1;
+            color: white;
+            border: none;
+            padding: 11px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .cart-btn:hover {
+            background: #064b96;
+        }
+
+        .offers {
+            background: #fff176;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .offers h2 {
+            color: #b71c1c;
+            margin-top: 0;
+        }
+
+        .services {
+            width: 100%;
+            background: #e8f5e9;
+            text-align: center;
+        }
+
+        .services td {
+            padding: 18px 5px;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer h2 {
+            margin-top: 0;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        /* Tablet screens */
+        @media screen and (max-width: 768px) {
+            .header-table,
+            .header-table tbody,
+            .header-table tr,
+            .header-table td {
+                display: block;
+                width: 100% !important;
+                text-align: center;
+            }
+
+            .header-table td {
+                padding: 10px;
+            }
+
+            .categories td {
+                display: inline-block;
+                width: 24%;
+                padding: 10px 2px;
+                font-size: 13px;
+            }
+
+            .banner,
+            .banner img {
+                height: 220px;
+            }
+
+            .banner-text h1 {
+                font-size: 30px;
+            }
+
+            .banner-text p {
+                font-size: 14px;
+            }
+
+            .product-img {
+                height: 130px;
+            }
+
+            .product-cell h3 {
+                font-size: 15px;
+            }
+
+            .price {
+                font-size: 18px;
+            }
+
+            .cart-btn {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+        }
+
+        /* Mobile screens */
+        @media screen and (max-width: 480px) {
+            .logo {
+                font-size: 23px;
+            }
+
+            .search-input {
+                width: 65%;
+            }
+
+            .header-links {
+                white-space: normal;
+            }
+
+            .categories td {
+                width: 48%;
+                font-size: 13px;
+            }
+
+            .banner,
+            .banner img {
+                height: 165px;
+            }
+
+            .banner-text {
+                top: 12%;
+                left: 4%;
+            }
+
+            .banner-text h1 {
+                font-size: 22px;
+            }
+
+            .banner-text p {
+                font-size: 11px;
+                margin: 5px 0;
+            }
+
+            .shop-btn {
+                padding: 7px 12px;
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                padding: 12px;
+            }
+
+            .product-cell {
+                padding: 10px 3px;
+            }
+
+            .product-img {
+                height: 85px;
+            }
+
+            .product-cell h3 {
+                font-size: 12px;
+            }
+
+            .price {
+                font-size: 15px;
+            }
+
+            .cart-btn {
+                padding: 7px 4px;
+                font-size: 10px;
+            }
+
+            .services td {
+                font-size: 12px;
+                padding: 12px 3px;
+            }
+
+            .offers {
+                font-size: 13px;
+            }
+
+            .footer a {
+                display: inline-block;
+                margin: 5px 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<table class="main-table" border="0" cellpadding="0" cellspacing="0">
+
+    <!-- HEADER -->
+    <tr class="header">
+        <td>
+            <table class="header-table" cellpadding="10">
+                <tr>
+                    <td width="25%">
+                        <div class="logo">
+                            🛒 <span>KLE</span>Commerce
+                        </div>
+                    </td>
+
+                    <td width="50%" align="center">
+                        <form onsubmit="searchProducts(event)">
+                            <input class="search-input"
+                                   type="search"
+                                   id="searchBox"
+                                   placeholder="Search Products">
+                            <button class="search-btn" type="submit">
+                                Search
+                            </button>
+                        </form>
+                    </td>
+
+                    <td width="25%" align="center">
+                        <div class="header-links">
+                            Login &nbsp; | &nbsp;
+                            Register &nbsp; | &nbsp;
+                            🛒 Cart (<span id="cartCount">0</span>)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- CATEGORIES -->
+    <tr>
+        <td>
+            <table class="categories" border="0">
+                <tr>
+                    <td>👕 Fashion</td>
+                    <td>🛍 Groceries</td>
+                    <td>💻 Electronics</td>
+                    <td>📱 Mobiles</td>
+                    <td>🧺 Appliances</td>
+                    <td>💄 Beauty</td>
+                    <td>📚 Books</td>
+                    <td>⚽ Sports</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- BANNER -->
+    <tr>
+        <td>
+            <div class="banner">
+                <img
+                    src="https://images.unsplash.com/photo- shopping"
+                    alt="Shopping banner"
+                    onerror="this.style.display='none'">
+
+                <div class="banner-text">
+                    <h1>Shop More,<br>Live Better!</h1>
+                    <p>Best Products | Great Discounts</p>
+                    <button class="shop-btn"
+                            onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+        </td>
+    </tr>
+
+    <!-- PRODUCT TITLE -->
+    <tr>
+        <td class="section-title">
+            FEATURED PRODUCTS
+        </td>
+    </tr>
+
+    <!-- PRODUCTS -->
+    <tr>
+        <td>
+            <table class="products" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+
+                    <td class="product-cell">
+                        <img class="product-img"
+                             src="https://images.unsplash.com/photo-1603252109303-2751441dd157?w=400"
+                             alt="Men's Shirt">
+                        <h3>Men's Shirt</h3>
+                        <div class="price">₹999</div>
+                        <button class="cart-btn"
+                                onclick="addToCart('Men\\'s Shirt', 999)">
+                            Add to Cart
+                        </button>
+                    </td>
+
+                    <td class="product-cell">
+                        <img class="product-img"
+                             src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400"
+                             alt="Rice Bag">
+                        <h3>Rice Bag</h3>
+                        <div class="price">₹1200</div>
+                        <button class="cart-btn"
+                                onclick="addToCart('Rice Bag', 1200)">
+                            Add to Cart
+                        </button>
+                    </td>
+
+                    <td class="product-cell">
+                        <img class="product-img"
+                             src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"
+                             alt="Smart Phone">
+                        <h3>Smart Phone</h3>
+                        <div class="price">₹15000</div>
+                        <button class="cart-btn"
+                                onclick="addToCart('Smart Phone', 15000)">
+                            Add to Cart
+                        </button>
+                    </td>
+
+                    <td class="product-cell">
+                        <img class="product-img"
+                             src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=400"
+                             alt="Washing Machine">
+                        <h3>Washing Machine</h3>
+                        <div class="price">₹22000</div>
+                        <button class="cart-btn"
+                                onclick="addToCart('Washing Machine', 22000)">
+                            Add to Cart
+                        </button>
+                    </td>
+
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- OFFERS -->
+    <tr>
+        <td class="offers">
+            <h2>🎉 Today's Special Offers 🎉</h2>
+            <p>👕 Flat 20% Discount on Fashion Products</p>
+            <p>🚚 Free Delivery Above ₹999</p>
+            <p>🎁 Buy One Get One on Selected Products</p>
+            <p>💰 Extra Cashback on Electronics</p>
+        </td>
+    </tr>
+
+    <!-- CUSTOMER SERVICES -->
+    <tr>
+        <td>
+            <table class="services" border="0">
+                <tr>
+                    <td>↩ Easy Returns</td>
+                    <td>🎧 24 × 7 Support</td>
+                    <td>🔒 Secure Payment</td>
+                    <td>🚚 Fast Delivery</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- FOOTER -->
+    <tr>
+        <td class="footer">
+            <h2>KLECommerce</h2>
+            <p>
+                <a href="#">Home</a> |
+                <a href="#products">Products</a> |
+                <a href="#">About Us</a> |
+                <a href="#">Contact Us</a> |
+                <a href="#">Help</a>
+            </p>
+            <p>Copyright &copy; 2026 KLECommerce</p>
+        </td>
+    </tr>
+
+</table>
+
+<script>
+    let cartCount = 0;
+    const cart = [];
+
+    function addToCart(name, price) {
+        cart.push({ name: name, price: price });
+        cartCount++;
+        document.getElementById("cartCount").textContent = cartCount;
+
+        alert(name + " added to cart!");
+    }
+
+    function searchProducts(event) {
+        event.preventDefault();
+
+        const query = document.getElementById("searchBox")
+            .value.trim().toLowerCase();
+
+        const cells = document.querySelectorAll(".product-cell");
+        let found = false;
+
+        cells.forEach(function(cell) {
+            const name = cell.querySelector("h3").textContent.toLowerCase();
+
+            if (name.includes(query)) {
+                cell.style.display = "";
+                found = true;
+            } else {
+                cell.style.display = query === "" ? "" : "none";
+            }
+        });
+
+        if (!found && query !== "") {
+            alert("No matching products found.");
+        }
+
+        document.getElementById("products").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+</script>
+
+</body>
+</html>
